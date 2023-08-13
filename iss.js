@@ -9,7 +9,11 @@
 const fetchMyIP = function(callback) { 
   // use request to fetch IP address from JSON API
 
-  request("https://api.ipify.org?format=json", (error, response, body) => )
+  request("https://api.ipify.org?format=json", (err, rspns, body) => {
+    if (err) {
+      callback(err)
+    }
+  })
 }
 
 module.exports = { fetchMyIP };
