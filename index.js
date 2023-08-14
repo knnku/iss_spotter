@@ -5,9 +5,16 @@ nextISSTimesForMyLocation((error, passTimes) => {
     return console.log("It didn't work!", error);
   }
   //Take unix time and convert into UTC *apparently
-  let time = passTimes.risetime;
-  let date = new Date(time * 1000);
+  const printPassTimes = function(passTimes) {
+    for (const pass of passTimes) {
+      const datetime = new Date(0);
+      datetime.setUTCSeconds(pass.risetime);
+      const duration = pass.duration;
+      console.log(`Next pass at ${datetime} for ${duration} seconds!`);
+    }
+  };
+  
 
   // success, print out the deets!
-  console.log(`Next pass at ${date} for ${passTimes.duration} seconds!`);
+  printPassTimes(passTimes);
 });

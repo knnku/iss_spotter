@@ -79,10 +79,7 @@ const nextISSTimesForMyLocation = function (callback) {
           return callback(error, null);
         }
 
-        //Loop to pass each item in passes array instead of all at once.
-        for (let passTime of iss) {
-          callback(null, passTime);
-        }
+        callback(null, iss);
       });
     });
   });
